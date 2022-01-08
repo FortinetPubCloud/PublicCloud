@@ -125,7 +125,7 @@
     },
     "vnetAddressPrefix": {
       "type": "string",
-      "defaultValue": "172.16.136.0/22",
+      "defaultValue": "10.0.0.0/16",
       "metadata": {
         "description": "Virtual Network Address prefix"
       }
@@ -139,14 +139,14 @@
     },
     "subnet1Prefix": {
       "type": "string",
-      "defaultValue": "172.16.136.0/26",
+      "defaultValue": "10.0.0.0/24",
       "metadata": {
         "description": "Subnet 1 Prefix"
       }
     },
     "subnet1StartAddress": {
       "type": "string",
-      "defaultValue": "172.16.136.4",
+      "defaultValue": "10.0.0.4",
       "metadata": {
         "description": "Subnet 1 start address, 2 consecutive private IPs are required"
       }
@@ -160,14 +160,14 @@
     },
     "subnet2Prefix": {
       "type": "string",
-      "defaultValue": "172.16.136.64/26",
+      "defaultValue": "10.0.1.0/24",
       "metadata": {
         "description": "Subnet 2 Prefix"
       }
     },
     "subnet2StartAddress": {
       "type": "string",
-      "defaultValue": "172.16.136.68",
+      "defaultValue": "10.0.1.4",
       "metadata": {
         "description": "Subnet 2 start address, 2 consecutive private IPs are required"
       }
@@ -181,7 +181,7 @@
     },
     "subnet3Prefix": {
       "type": "string",
-      "defaultValue": "172.16.137.0/24",
+      "defaultValue": "10.0.2.0/24",
       "metadata": {
         "description": "Subnet 3 Prefix"
       }
