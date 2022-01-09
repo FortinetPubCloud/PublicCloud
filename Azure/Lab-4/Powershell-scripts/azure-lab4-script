@@ -1,0 +1,20 @@
+#If required, set the following variables to your own environment:
+$subscriptionName = "Pay-As-You-Go"
+$resourceGroupName = "SxLabHA"
+$appRegistrationName = "SxLabHAapp"
+
+#Do not modify the following part.
+$password = "NSE7cloud="
+$subscription = Get-AzSubscription -SubscriptionName $subscriptionName
+$subscriptionId = $subscription.Id
+$tenantId = $subscription.TenantId
+$credentials = New-Object Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential -Property @{ StartDate=Get-Date; EndDate=Get-Date -Year 2024; Password=$password}
+$sp = New-AzAdServicePrincipal -DisplayName $appRegistrationName -PasswordCredential $credentials
+#Wait a few seconds in between these two commands
+Start-Sleep -s 20
+$role = $sp | New-AzRoleAssignment -RoleDefinitionName Owner -ResourceGroupName $resourceGroupName
+$spAppId = $sp.ApplicationId.Guid
+$resourceGroupId = (Get-AzResourceGroup -Name $resourceGroupName).ResourceId
+#Output the results
+write-host "`n`nSave the following information for your template parameters: `n`nTenant ID: $tenantId`nClient ID: $spAppId`nClient secret: $password`nSubscription ID: $subscriptionId`nResource group: $resourceGroupName`n"
+#Done!
